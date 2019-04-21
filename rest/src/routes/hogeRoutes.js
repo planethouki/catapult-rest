@@ -18,32 +18,15 @@
  * along with Catapult.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-const accountRoutes = require('./accountRoutes');
-const blockRoutes = require('./blockRoutes');
-const chainRoutes = require('./chainRoutes');
-const diagnosticRoutes = require('./diagnosticRoutes');
-const networkRoutes = require('./networkRoutes');
-const nodeRoutes = require('./nodeRoutes');
-const transactionRoutes = require('./transactionRoutes');
-const transactionStatusRoutes = require('./transactionStatusRoutes');
-const wsRoutes = require('./wsRoutes');
-const hogeRoutes = require('./hogeRoutes');
+const routeResultTypes = require('./routeResultTypes');
+// const routeUtils = require('./routeUtils');
 
 module.exports = {
-	register: (...args) => {
-		const allRoutes = [
-			accountRoutes,
-			blockRoutes,
-			chainRoutes,
-			diagnosticRoutes,
-			networkRoutes,
-			nodeRoutes,
-			transactionRoutes,
-			transactionStatusRoutes,
-			wsRoutes,
-			hogeRoutes];
-		allRoutes.forEach(routes => {
-			routes.register(...args);
-		});
+	register: (server, db) => {
+		server.get('/hoge', (req, res, next) =>
+			db.hogeInfo().then(payload => {
+				res.send({ payload, type: routeResultTypes.transaction });
+				next();
+			}));
 	}
 };

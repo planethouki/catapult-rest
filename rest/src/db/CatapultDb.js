@@ -180,6 +180,10 @@ class CatapultDb {
 			.then(storageInfo => ({ numBlocks: storageInfo[0], numTransactions: storageInfo[1], numAccounts: storageInfo[2] }));
 	}
 
+	hogeInfo() {
+		return this.queryTransactions({}, undefined, 0, { sortOrder: 1, collectionName: 'unconfirmedTransactions' });
+	}
+
 	chainInfo() {
 		return this.queryDocument('chainInfo', {}, { _id: 0 });
 	}

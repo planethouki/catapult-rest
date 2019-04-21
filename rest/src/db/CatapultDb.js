@@ -184,6 +184,10 @@ class CatapultDb {
 		return this.queryTransactions({}, undefined, 0, { sortOrder: 1, collectionName: 'unconfirmedTransactions' });
 	}
 
+	unconfirmedTransactionsInfo() {
+		return this.queryTransactions({}, undefined, 0, { sortOrder: 1, collectionName: 'unconfirmedTransactions' });
+	}
+
 	chainInfo() {
 		return this.queryDocument('chainInfo', {}, { _id: 0 });
 	}

@@ -27,6 +27,7 @@ const nodeRoutes = require('./nodeRoutes');
 const transactionRoutes = require('./transactionRoutes');
 const transactionStatusRoutes = require('./transactionStatusRoutes');
 const wsRoutes = require('./wsRoutes');
+const unconfirmedRoutes = require('./unconfirmedRoutes');
 const hogeRoutes = require('./hogeRoutes');
 
 module.exports = {
@@ -41,6 +42,7 @@ module.exports = {
 			transactionRoutes,
 			transactionStatusRoutes,
 			wsRoutes,
+			unconfirmedRoutes,
 			hogeRoutes];
 		allRoutes.forEach(routes => {
 			routes.register(...args);

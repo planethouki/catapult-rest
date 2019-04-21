@@ -13,3 +13,4 @@ jsconfig.json
 .DS_Store
 
 rest/coverage
+.rest.json
